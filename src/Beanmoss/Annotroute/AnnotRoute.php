@@ -49,14 +49,14 @@ class AnnotRoute
         \Route::group($group, function() use ($methodAnnot, $refMethod) {
 
             $method = $methodAnnot->method;
-
             $action = [
                 'uses' => $refMethod->class . '@' . $refMethod->name,
-                'before' => $methodAnnot->before,
-                'after' => $methodAnnot->after,
+                'middleware' => $methodAnnot->middleware,
                 'as' => $methodAnnot->name
             ];
-
+            if ($methodAnnot->middleware == null) {
+                unset($action['middleware']); 
+            }
             \Route::$method($methodAnnot->path, $action)->where($methodAnnot->where);
         });
     }

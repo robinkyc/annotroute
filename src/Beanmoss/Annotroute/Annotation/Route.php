@@ -18,8 +18,7 @@ class Route
 
     public $method;
     public $path;
-    public $before;
-    public $after;
+    public $middleware;
     public $name;
 
     /** @var array */
@@ -49,14 +48,9 @@ class Route
         return $this->path;
     }
 
-    public function getBefore()
+    public function getMiddleware()
     {
-        return $this->before;
-    }
-
-    public function getAfter()
-    {
-        return $this->after;
+        return $this->middleware;
     }
 
     public function getName()
@@ -74,14 +68,9 @@ class Route
         $this->path = $path;
     }
 
-    public function setBefore($before)
+    public function setMiddleware($middleware)
     {
-        $this->before = $before;
-    }
-
-    public function setAfter($after)
-    {
-        $this->after = $after;
+        $this->middleware = $middleware;
     }
 
     public function setName($name)
