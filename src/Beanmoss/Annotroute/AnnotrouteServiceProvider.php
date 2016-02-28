@@ -18,7 +18,7 @@ class AnnotrouteServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app->bindShared('annot.route', function() { return new AnnotRoute(); });
+		$this->app->singleton('annot.route', function() { return new AnnotRoute(); });
 	}
 
 	/**
